@@ -1,0 +1,16 @@
+pipeline{
+    agent any
+    stages{
+        stage("testing"){
+            environment{
+                toolname = "jenkins"
+            }
+            steps{
+                script{
+                    toolname = "ansible"
+                }
+                echo "this is testing : $toolname and ${env . toolname}"
+            }
+        }
+    }
+}
