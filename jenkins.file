@@ -1,22 +1,15 @@
-pipeline {
+pipeline{
     agent any
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building...'
-                // Add build steps here
+    stages{
+        stage("testing"){
+            environment{
+                toolname = "jenkins"
             }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                // Add test steps here
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                // Add deploy steps here
+            steps{
+                script{
+                    toolname = "ansible"
+                }
+                echo "this is testing : $toolname and ${env . toolname}"
             }
         }
     }
